@@ -40,7 +40,7 @@ done=false
 
 echo
 print_brake 70
-echo "* CarlozCodes - AutoScitp Para Pterodactyl"
+echo "* CarlozCodes - AutoScript Para Pterodactyl"
 echo
 print_brake 70
 echo
@@ -55,7 +55,7 @@ bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekkk/main/the
 
 while [ "$done" == false ]; do
   options=(
-    "Usar o backuo(To fazendo ainda n tenta usar)"
+    "Usar o backup(Em produção)"
     "Tema 1"
     "Cancelar"
   )
@@ -79,7 +79,7 @@ while [ "$done" == false ]; do
   
   [ -z "$action" ] && error "Opção inválida!"&& continue
   
-  valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
+  valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 2; i += 1)); do echo "${i}"; done)")
   [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Não encontrei essa opção."
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && eval "${actions[$action]}"
 done
