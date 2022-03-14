@@ -139,7 +139,7 @@ print "Baixando os arquivos do tema..."
 cd "$PTERO"
 mkdir -p temp
 cd temp
-curl -sSLo Dracula.tar.gz https://raw.githubusercontent.com/Ferks-FK/Pterodactyl-AutoThemes/"${SCRIPT_VERSION}"/themes/version1.x/Dracula/Dracula.tar.gz
+curl -sSLo Dracula.tar.gz https://raw.githubusercontent.com/Ferks-FK/Pterodactyl-AutoThemes/themes/version1.x/Dracula/Dracula.tar.gz
 tar -xzvf Dracula.tar.gz
 cd Dracula
 cp -rf -- * "$PTERO"
