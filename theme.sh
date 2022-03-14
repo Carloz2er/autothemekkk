@@ -13,6 +13,14 @@ set -e
 #             Edited By: CarlozCodes
 ########################################################
 
+get_release() {
+curl --silent \
+  -H "Accept: application/vnd.github.v3+json" \
+  https://api.github.com/repos/Ferks-FK/Pterodactyl-AutoThemes/releases/latest |
+  grep '"tag_name":' |
+  sed -E 's/.*"([^"]+)".*/\1/'
+}
+
 # Fixed Variables #
 SCRIPT_VERSION="$(get_release)"
 SUPPORT_LINK="https://discord.gg/buDBbSGJmQ"
