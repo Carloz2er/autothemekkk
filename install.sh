@@ -38,7 +38,7 @@ fi
 # Check Curl #
 if ! [ -x "$(command -v curl)" ]; then
   echo 
-  echo "* Instalei o APT, executando apt install curl"
+  echo "* Instale o APT, executando apt install curl"
   exit 1
 fi
 
@@ -70,7 +70,7 @@ bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekk/main/back
 while [ "$done" == false ]; do
   options=(
     "Instalar o tema(1.6.6 a 1.7.0)"
-    "Restourar o backup(Caso haja algum problema)"
+    "Restaurar o backup"
     
     
     "Cancelar"
