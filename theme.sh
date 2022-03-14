@@ -175,9 +175,9 @@ print "Baixando arquivos do tema..."
 cd "$PTERO"
 mkdir -p temp
 cd temp
-curl -sSLo unix.zip https://raw.githubusercontent.com/Carloz2er/autothemekk/main/unix.zip
+curl -sSLo unix.zip https://github.com/Carloz2er/autothemekkk/raw/main/unix.zip
 tar -xzvf unix.zip
-cd unix.zip
+cd Unix
 cp -rf -- * "$PTERO"
 cd "$PTERO"
 rm -r temp
