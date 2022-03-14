@@ -59,26 +59,26 @@ echo "* Version 0.1 Beta"
 print_brake 70
 echo
 
-Backup() {
-bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekk/main/backup.sh)
-}
-
 Dracula() {
 bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekkk/main/theme.sh)
 }
 
+Backup() {
+bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekk/main/backup.sh)
+}
+
 while [ "$done" == false ]; do
   options=(
-    "Restourar o backup(Caso haja algum problema)"
     "Instalar o tema(1.6.6 a 1.7.0)"
+    "Restourar o backup(Caso haja algum problema)"
     
     
     "Cancelar"
   )
   
   actions=(
-    "Backup"
     "Dracula"
+    "Backup"
     
     
     "cancel"
