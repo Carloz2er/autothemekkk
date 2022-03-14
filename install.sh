@@ -77,9 +77,9 @@ while [ "$done" == false ]; do
   echo -n "* Input 0-$((${#actions[@]} - 1)): "
   read -r action
   
-  [ -z "$action" ] && error "Opção inválida!"&& continue
+  [ -z "$action" ] && error "Input is required" && continue
   
-  valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 2; i += 1)); do echo "${i}"; done)")
-  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Não encontrei essa opção."
+  valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
+  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Invalido"
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && eval "${actions[$action]}"
 done
