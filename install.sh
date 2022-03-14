@@ -2,8 +2,9 @@
 
 set -e
 
-# CarlozCode
+# CarlozCode - Ferks-FK
 
+# Visual Functions #
 print_brake() {
   for ((n = 0; n < $1; n++)); do
     echo -n "#"
@@ -19,8 +20,12 @@ RESET="\e[0m"
 RED='\033[0;31m'
 
 error() {
-  echo -e "* ${RED}FALHA:${RESET}: $1"
+  echo ""
+  echo -e "* ${RED}ERRO${RESET}: $1"
+  echo ""
 }
+
+# Check Sudo #
 if [[ $EUID -ne 0 ]]; then
   echo "* Entre no modo "Sudo" para executar este script! 1>&2
   exit 1
@@ -28,6 +33,13 @@ fi
 if ! [ -x "$(command -v curl)" ]; then
   echo "* "
 exit 1
+fi
+
+# Check Curl #
+if ! [ -x "$(command -v curl)" ]; then
+  echo "* curl is required in order for this script to work."
+  echo "* install using apt (Debian and derivatives) or yum/dnf (CentOS)"
+  exit 1
 fi
 
 cancel() {
@@ -43,6 +55,7 @@ echo
 print_brake 70
 echo "* CarlozCodes - AutoScript Para Pterodactyl"
 echo
+echo "* Version 0.1 Beta"
 print_brake 70
 echo
 
