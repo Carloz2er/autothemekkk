@@ -5,22 +5,13 @@ set -e
 
 ########################################################
 # 
-#         Pterodactyl-AutoThemes Installation
+#        Pterodactyls-AutoThemes Installation
 #
 #         Created and maintained by Ferks-FK
 #
 #            Protected by MIT License
-#
+#             Edited By: CarlozCodes
 ########################################################
-
-# Get the latest version before running the script #
-get_release() {
-curl --silent \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/Ferks-FK/Pterodactyl-AutoThemes/releases/latest |
-  grep '"tag_name":' |
-  sed -E 's/.*"([^"]+)".*/\1/'
-}
 
 # Fixed Variables #
 SCRIPT_VERSION="$(get_release)"
@@ -101,7 +92,7 @@ check_distro() {
 
 # Find where pterodactyl is installed #
 find_pterodactyl() {
-print "Looking for your pterodactyl installation..."
+print "Procurando sua instalação de pterodactyl..."
 
 sleep 2
 if [ -d "/var/www/pterodactyl" ]; then
@@ -122,13 +113,13 @@ update_variables
 
 # Verify Compatibility #
 compatibility() {
-print "Checking if the addon is compatible with your panel..."
+print "Verificando se o addon é compatível com o seu painel..."
 
 sleep 2
 if [ "$PANEL_VERSION" == "1.6.6" ] || [ "$PANEL_VERSION" == "1.7.0" ]; then
-    print "Compatible Version!"
+    print "Versão compatível!"
   else
-    print_error "Incompatible Version!"
+    print_error "Versão incompatível"
     exit 1
 fi
 }
@@ -136,7 +127,7 @@ fi
 
 # Install Dependencies #
 dependencies() {
-print "Installing dependencies..."
+print "Instalando alguns pacotes ou atualizando..."
 
 case "$OS" in
 debian | ubuntu)
@@ -151,10 +142,10 @@ esac
 
 # Panel Backup #
 backup() {
-print "Performing security backup..."
+print "Criando um backup."
 
 if [ -d "$PTERO/PanelBackup[Auto-Themes]" ]; then
-    print "There is already a backup, skipping step..."
+    print "Backup já detectado, pulando..."
   else
     cd "$PTERO"
     if [ -d "$PTERO/node_modules" ]; then
@@ -171,7 +162,7 @@ fi
 
 # Download Files #
 download_files() {
-print "Downloading files..."
+print "Baixando arquivos do tema..."
 
 cd "$PTERO"
 mkdir -p temp
@@ -192,8 +183,8 @@ sed -i "32a\{!! Theme::css('css/admin.css?t={cache-version}') !!}" "$PTERO/resou
 
 # Panel Production #
 production() {
-print "Producing panel..."
-print_warning "This process takes a few minutes, please do not cancel it."
+print "Produzindo painel..."
+print_warning "Este processo leva alguns minutos, por favor, não o cancele."
 
 if [ -d "$PTERO/node_modules" ]; then
     cd "$PTERO"
@@ -211,9 +202,9 @@ fi
 bye() {
 print_brake 50
 echo
-echo -e "${GREEN}* The theme ${YELLOW}Dracula${GREEN} was successfully installed."
-echo -e "* A security backup of your panel has been created."
-echo -e "* Thank you for using this script."
+echo -e "${GREEN}* O Tema ${YELLOW}Unix${GREEN} foi instalado com sucesso."
+echo -e "* Backup criado."
+echo -e "* Obrigado por usar o script editado"
 echo -e "* Support group: ${YELLOW}$(hyperlink "$SUPPORT_LINK")${RESET}"
 echo
 print_brake 50
@@ -223,7 +214,7 @@ print_brake 50
 check_distro
 find_pterodactyl
 if [ "$PTERO_INSTALL" == true ]; then
-    print "Installation of the panel found, continuing the installation..."
+    print "Painel Pterodactyl encontrado, continuando."
 
     compatibility
     dependencies
@@ -233,12 +224,12 @@ if [ "$PTERO_INSTALL" == true ]; then
     production
     bye
   elif [ "$PTERO_INSTALL" == false ]; then
-    print_warning "The installation of your panel could not be located."
+    print_warning "A instalação do painel não pôde ser localizada."
     echo -e "* ${GREEN}EXAMPLE${RESET}: ${YELLOW}/var/www/mypanel${RESET}"
-    echo -ne "* Enter the pterodactyl installation directory manually: "
+    echo -ne "* Digite o diretório de instalação pterodactyl manualmente: "
     read -r MANUAL_DIR
     if [ -d "$MANUAL_DIR" ]; then
-        print "Directory has been found!"
+        print "Diretório encontrado!"
         PTERO="$MANUAL_DIR"
         echo "$MANUAL_DIR" >> "$INFORMATIONS/custom_directory.txt"
         update_variables
@@ -250,7 +241,7 @@ if [ "$PTERO_INSTALL" == true ]; then
         production
         bye
       else
-        print_error "The directory you entered does not exist."
+        print_error "O diretório que você inseriu não existe."
         find_pterodactyl
     fi
 fi
