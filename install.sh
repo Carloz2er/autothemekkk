@@ -92,12 +92,12 @@ while [ "$done" == false ]; do
   done
   
   echo
-  echo -n "* Input 0-$((${#actions[@]} - 2)):"
+  echo -n "* Input 0-$((${#actions[@]} - 1)):"
   read -r action
   
   [ -z "$action" ] && error "Não reconheci a oção" && continue
   
-    valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 2)); do echo "${i}"; done)")
+    valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
   [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Opção nao reconhecida"
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && eval "${actions[$action]}"
 done
