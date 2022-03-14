@@ -202,7 +202,6 @@ if [ "$PTERO_INSTALL" == true ]; then
         PTERO="$MANUAL_DIR"
         echo "$MANUAL_DIR" >> "$INFORMATIONS/custom_directory.txt"
         update_variables
-        compatibility
         dependencies
         backup
         download_files
