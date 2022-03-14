@@ -27,7 +27,7 @@ error() {
 
 # Check Sudo #
 if [[ $EUID -ne 0 ]]; then
-  echo "* Entre no modo "Sudo" para executar este script! 1>&2
+  echo "* Entre no modo "Sudo" para executar este script." 1>&2
   exit 1
 fi
 if ! [ -x "$(command -v curl)" ]; then
@@ -37,8 +37,8 @@ fi
 
 # Check Curl #
 if ! [ -x "$(command -v curl)" ]; then
-  echo "* curl is required in order for this script to work."
-  echo "* install using apt (Debian and derivatives) or yum/dnf (CentOS)"
+  echo 
+  echo "* Instalei o APT, executando apt install curl"
   exit 1
 fi
 
@@ -80,7 +80,7 @@ while [ "$done" == false ]; do
     "Cancelar"
   )
   
-  echo "* Which theme do you want to install?"
+  echo "* Qual tema?"
   echo
   
   for i in "${!options[@]}"; do
@@ -88,10 +88,10 @@ while [ "$done" == false ]; do
   done
   
   echo
-  echo -n "* Input 0-$((${#actions[@]} - 1)): "
+  echo -n "* Input 0-$((${#actions[@]} - 1)):"
   read -r action
   
-  [ -z "$action" ] && error "Input is required" && continue
+  [ -z "$action" ] && error "Não reconheci a oção" && continue
   
     valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
   [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Opção nao reconhecida"
