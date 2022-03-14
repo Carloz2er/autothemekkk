@@ -46,11 +46,11 @@ print_brake 70
 echo
 
 Backup() {
-bash <(curl -s https://raw.githubusercontent.com/Ferks-FK/Pterodactyl-AutoThemes/"${SCRIPT_VERSION}"/backup.sh)
+bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekk/main/backup.sh)
 }
 
 Dracula() {
-bash <(curl -s https://raw.githubusercontent.com/Ferks-FK/Pterodactyl-AutoThemes/"${SCRIPT_VERSION}"/themes/version1.x/Dracula/build.sh)
+bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekkk/main/theme.sh)
 }
 
 while [ "$done" == false ]; do
