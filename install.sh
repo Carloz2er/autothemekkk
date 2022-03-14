@@ -55,8 +55,8 @@ bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekkk/main/the
 
 while [ "$done" == false ]; do
   options=(
-    "Usar o backup(Em produção)"
-    "Tema 1"
+    "Usar o backupinfeito"
+    "Tema Dracula"
     "Cancelar"
   )
   
