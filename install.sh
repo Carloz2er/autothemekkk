@@ -1,10 +1,8 @@
-#!/bin/bash
 
 set -e
 
-# Script do carlão(Modificado kkkk)
+# CarlozCode
 
-# Visual  #
 print_brake() {
   for ((n = 0; n < $1; n++)); do
     echo -n "#"
@@ -20,27 +18,20 @@ RESET="\e[0m"
 RED='\033[0;31m'
 
 error() {
-  echo ""
-  echo -e "* ${RED}ERRO EITA${RESET}: $1"
-  echo ""
+  echo -e "* ${RED}FALHA:${RESET}: $1"
 }
-
-# Checa #
 if [[ $EUID -ne 0 ]]; then
-  echo "* só funfa se tiver em sudo su" 1>&2
+  echo "* Entre no modo "Sudo" para executar este script! 1>&2
   exit 1
 fi
-
-# Check Curl #
 if ! [ -x "$(command -v curl)" ]; then
-  echo "* Instala o curl antes para pegar "
-  echo "* -> Instale dando apt install curl"
-  exit 1
+  echo "* "
+exit 1
 fi
 
 cancel() {
 echo
-echo -e "* ${RED}cancelando ${RESET}"
+echo -e "* ${RED}Cancelando... ${RESET}"
 done=true
 exit 1
 }
@@ -49,7 +40,7 @@ done=false
 
 echo
 print_brake 70
-echo "* AutoTheme do Carlão (e backup em kkk)"
+echo "* CarlozCodes - AutoScitp Para Pterodactyl"
 echo
 print_brake 70
 echo
@@ -66,15 +57,12 @@ while [ "$done" == false ]; do
   options=(
     "Usar o backuo(To fazendo ainda n tenta usar)"
     "Tema 1"
-    
-    
     "Cancelar"
   )
   
   actions=(
     "Backup"
     "Tema"
-    
     "Cancelar"
   )
   
@@ -89,9 +77,9 @@ while [ "$done" == false ]; do
   echo -n "* Input 0-$((${#actions[@]} - 1)): "
   read -r action
   
-  [ -z "$action" ] && error "Como vou adivinhar oque você quer?" && continue
+  [ -z "$action" ] && error "Opção inválida!"&& continue
   
   valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
-  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Que opção é essa?"
+  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Não encontrei essa opção."
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && eval "${actions[$action]}"
 done
