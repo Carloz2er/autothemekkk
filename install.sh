@@ -66,7 +66,7 @@ while [ "$done" == false ]; do
     "Cancelar"
   )
   
-  echo "* Qual tema você deseja instalar?"
+  echo "* Which theme do you want to install?"
   echo
   
   for i in "${!options[@]}"; do
@@ -80,6 +80,6 @@ while [ "$done" == false ]; do
   [ -z "$action" ] && error "Input is required" && continue
   
   valid_input=("$(for ((i = 0; i <= ${#actions[@]} - 1; i += 1)); do echo "${i}"; done)")
-  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Invalido"
+  [[ ! " ${valid_input[*]} " =~ ${action} ]] && error "Invalid option"
   [[ " ${valid_input[*]} " =~ ${action} ]] && done=true && eval "${actions[$action]}"
 done
