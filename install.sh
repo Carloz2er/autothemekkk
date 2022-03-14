@@ -69,15 +69,19 @@ bash <(curl -s https://raw.githubusercontent.com/Carloz2er/autothemekkk/main/the
 
 while [ "$done" == false ]; do
   options=(
-    "Usar o backupinfeito"
-    "Tema Dracula"
+    "Restourar o backup(Caso haja algum problema)"
+    "Instalar o tema(1.6.6 a 1.7.0)"
+    
+    
     "Cancelar"
   )
   
   actions=(
     "Backup"
-    "Tema"
-    "Cancelar"
+    "Dracula"
+    
+    
+    "cancel"
   )
   
   echo "* Qual tema?"
