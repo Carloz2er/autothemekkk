@@ -185,8 +185,7 @@ check_distro
 find_pterodactyl
 if [ "$PTERO_INSTALL" == true ]; then
     print "Instalação do painel encontrado, continuando a instalação..."
-
-    compatibility
+    
     dependencies
     backup
     download_files
